@@ -3,6 +3,7 @@ import { connectDB } from './config/dbConnection.js';
 import errorMiddleware from "./middlewares/error.js";
 import cors from "cors";
 import dotenv from "dotenv";
+import taskRouter from "./routes/router.js";
 
 const app = express();
 dotenv.config();
@@ -16,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Routes
+app.use("/api/v1", taskRouter);
+
 
 app.get("/", (req, res) => {
     res.send("<h1>Welcome to task management api.</h1>");
